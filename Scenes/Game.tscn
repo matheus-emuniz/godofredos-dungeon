@@ -16,7 +16,7 @@ editor_draw_drag_margin = true
 [node name="Map" type="Node" parent="."]
 
 [node name="MapTile" parent="Map" instance=ExtResource( 1 )]
-position = Vector2( 47.3233, 17.8117 )
+position = Vector2( 46.2638, 19.6621 )
 
 [node name="MapTile2" parent="Map" instance=ExtResource( 1 )]
 position = Vector2( 217.314, 19.5935 )
@@ -27,11 +27,11 @@ position = Vector2( 389.455, 17.8117 )
 index = 2
 
 [node name="MapTile4" parent="Map" instance=ExtResource( 1 )]
-position = Vector2( 557.295, 18.6026 )
+position = Vector2( 559.445, 17.8117 )
 index = 3
 
 [node name="MapTile6" parent="Map" instance=ExtResource( 1 )]
-position = Vector2( 47.3233, 186.911 )
+position = Vector2( 46.2638, 187.971 )
 index = 4
 
 [node name="MapTile7" parent="Map" instance=ExtResource( 1 )]
@@ -43,7 +43,7 @@ position = Vector2( 388.195, 187.802 )
 index = 6
 
 [node name="MapTile9" parent="Map" instance=ExtResource( 1 )]
-position = Vector2( 558.185, 186.02 )
+position = Vector2( 559.445, 186.911 )
 index = 7
 
 [node name="MapTile10" parent="Map" instance=ExtResource( 1 )]
@@ -59,7 +59,7 @@ position = Vector2( 388.195, 356.902 )
 index = 10
 
 [node name="MapTile13" parent="Map" instance=ExtResource( 1 )]
-position = Vector2( 557.295, 356.902 )
+position = Vector2( 559.445, 356.902 )
 index = 11
 
 [node name="MapTile14" parent="Map" instance=ExtResource( 1 )]
@@ -75,9 +75,9 @@ position = Vector2( 388.195, 526.892 )
 index = 14
 
 [node name="MapTile17" parent="Map" instance=ExtResource( 1 )]
-position = Vector2( 558.185, 526.892 )
+position = Vector2( 559.445, 526.892 )
 index = 15
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 473.357, 265.67 )
-frame = 0
+position = Vector2( 473.357, 267.084 )
+frame = 2

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/esqueleto.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scenes/Monstro.gd" type="Script" id=2]
+
+[node name="Monstro" type="AnimatedSprite"]
+frames = ExtResource( 1 )
+frame = 1
+playing = true
+script = ExtResource( 2 )
