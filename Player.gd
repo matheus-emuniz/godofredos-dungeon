@@ -6,6 +6,13 @@ export var torch: SpriteFrames
 
 onready var game = get_parent()
 
+onready var tipo = "player"
+onready var index = "qualquer_merda"
+
+onready var dano = 1
+onready var resistencia = 100
+onready var vida = 11
+
 
 
 var hp: int
