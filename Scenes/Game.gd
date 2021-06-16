@@ -12,12 +12,6 @@ onready var vaziokkj = load("res://Scenes/vaziokkj.tscn")
 onready var stats = get_node("Stats")
 onready var sound_effects_player = get_node("SoundEffects")
 
-#onready var espada = load("res://Scenes/Espada.tscn")
-#onready var espada = load("res://Scenes/Espada.tscn")
-#onready var espada = load("res://Scenes/Espada.tscn")
-#onready var espada = load("res://Scenes/Espada.tscn")
-
-
 onready var Player = get_node("Player")
 export var player_level: int = 1
 export var tipo = "player"
@@ -50,6 +44,8 @@ func _ready():
 	move_player(player_position)
 	
 	SimpleSave.load_scene_partial(stats, 'stats.tscn')
+	
+	stats.current_score = 0
 
 func check_visao(posicao):
 	#return
@@ -236,6 +232,8 @@ func combate(godofo, inimigo):
 			if godofo.vida - istats.monstro_dano <= 0:
 				print("morreu")
 				godofo.vida -= istats.monstro_dano
+				sound_effects_player.play_death()
+				SimpleSave.save_scene_partial(stats, "stats.tscn")
 				break
 				#faz alguma coisa ai matheus
 			else:
@@ -253,12 +251,14 @@ func get_espada(godofo, espada):
 	print("Pegou espada (dano): " + str(godofo.dano))
 	print("Pegou espada (resistencia): " + str(godofo.resistencia))
 	inject_sprite(map[newi], vaziokkj)
+	sound_effects_player.play_pickup()
 	#muda sprite @mat (Pode ser tanto gold qnd normal sword aq)
 	
 func get_pocao(godofo, pocao):
 	godofo.vida += pocao.info.cura
 	print("Curou: " + str(godofo.vida))
 	inject_sprite(map[newi], vaziokkj)
+	sound_effects_player.play_pickup()
 
 func get_center(node: TouchScreenButton):
 	return node.position + Vector2(

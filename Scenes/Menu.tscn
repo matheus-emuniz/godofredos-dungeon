@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/Theme.tres" type="Theme" id=2]
+[ext_resource path="res://Scenes/Stats.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Menu.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -11,10 +13,11 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -4.40973
-margin_top = 3.66608
+margin_top = 5.41843
 margin_right = -4.40973
-margin_bottom = 3.66602
+margin_bottom = 5.41833
 theme = ExtResource( 2 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,17 +34,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="Start" type="Button" parent="."]
 margin_left = 185.0
-margin_top = 345.292
+margin_top = 346.414
 margin_right = 604.0
-margin_bottom = 434.292
+margin_bottom = 435.414
 text = "JOGAR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button3" type="Button" parent="."]
+[node name="Exit" type="Button" parent="."]
 margin_left = 185.0
 margin_top = 826.5
 margin_right = 604.0
@@ -51,22 +54,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 196.576
+[node name="HighScore" type="Label" parent="."]
+margin_left = 197.52
 margin_top = 470.933
-margin_right = 468.576
+margin_right = 484.52
 margin_bottom = 501.933
 text = "High Score:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 495.029
-margin_top = 470.586
-margin_right = 523.029
-margin_bottom = 501.586
+[node name="HighScoreVal" type="Label" parent="."]
+margin_left = 493.52
+margin_top = 470.933
+margin_right = 521.52
+margin_bottom = 501.933
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LastScore" type="Label" parent="."]
+margin_left = 197.52
+margin_top = 521.137
+margin_right = 493.52
+margin_bottom = 552.137
+text = "Last Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LastScoreVal" type="Label" parent="."]
+margin_left = 500.797
+margin_top = 521.137
+margin_right = 528.797
+margin_bottom = 552.137
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" parent="." instance=ExtResource( 3 )]
+
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

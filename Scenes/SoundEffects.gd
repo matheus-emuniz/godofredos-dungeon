@@ -2,7 +2,7 @@ extends AudioStreamPlayer
 
 onready var death = load("res://Sounds/death.ogg")
 onready var pickup = load("res://Sounds/pickup.ogg")
-onready var battle = load("res://Sounds/battle")
+onready var battle = load("res://Sounds/battle.ogg")
 
 func play_death():
 	self.stream = death
