@@ -11,11 +11,19 @@ var info = {
 	'xp_monstro': 0,
 }
 
+onready var hp = get_node("Control/HP")
+onready var hp_val = get_node("Control/HPVal")
+
 onready var Game = get_parent().get_parent()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _process(delta):
+	if tipo in ["esqueleto", "slime", "zumbi"] and index in Game.area_player:
+		hp.show()
+		hp_val.show()
+		hp_val.text = str(info.monstro_vida)
+	else:
+		hp.hide()
+		hp_val.hide()
 
 func _on_MapTile_pressed():
 	Game.move_player(self)

@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-export var goldSword: SpriteFrames
+export var gold_sword: SpriteFrames
 export var sword: SpriteFrames
 export var torch: SpriteFrames
 
@@ -20,5 +20,11 @@ var hp: int
 func _ready():
 	self.frames = torch
 
-func change_texture():
-	pass
+func change_texture(texture):
+	match texture:
+		"sword":
+			self.frames = sword
+		"gold_sword":
+			self.frames = gold_sword
+		"torch":
+			self.frames = torch

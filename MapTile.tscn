@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/tile.png" type="Texture" id=1]
 [ext_resource path="res://MapTile.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/heart16.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=4]
 
 [sub_resource type="VisualShaderNodeColorConstant" id=1]
 output_port_for_preview = 0
@@ -42,11 +44,47 @@ nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = ExtResource( 4 )
+
 [node name="MapTile" type="TouchScreenButton"]
 material = SubResource( 3 )
 position = Vector2( 20.2142, 15.7983 )
 scale = Vector2( 5.3122, 5.3122 )
 normal = ExtResource( 1 )
 script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 34.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="TextureRect" parent="Control"]
+visible = false
+margin_left = 3.94114
+margin_top = 4.48534
+margin_right = 19.9411
+margin_bottom = 20.4853
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPVal" type="Label" parent="Control"]
+visible = false
+margin_left = 10.0
+margin_top = 4.0
+margin_right = 25.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 4 )
+text = "8"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="." to="." method="_on_MapTile_pressed"]

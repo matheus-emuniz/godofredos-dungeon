@@ -66,9 +66,9 @@ __meta__ = {
 
 [node name="HighScoreVal" type="Label" parent="."]
 margin_left = 493.52
-margin_top = 470.933
+margin_top = 472.122
 margin_right = 521.52
-margin_bottom = 501.933
+margin_bottom = 503.122
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false

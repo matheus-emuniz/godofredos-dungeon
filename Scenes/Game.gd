@@ -224,6 +224,7 @@ func combate(godofo, inimigo):
 				godofo.dano = 1
 				godofo.resistencia = 100
 				#muda sprite pra torch @mat
+				Player.change_texture("torch")
 			inject_sprite(map[newi], vaziokkj)
 			break
 		else:
@@ -234,6 +235,7 @@ func combate(godofo, inimigo):
 				godofo.vida -= istats.monstro_dano
 				sound_effects_player.play_death()
 				SimpleSave.save_scene_partial(stats, "stats.tscn")
+				get_tree().change_scene("res://Scenes/DeathScreen.tscn")
 				break
 				#faz alguma coisa ai matheus
 			else:
@@ -243,6 +245,7 @@ func combate(godofo, inimigo):
 					godofo.dano = 1
 					godofo.resistencia = 100
 					#muda sprite pra torch @mat
+					Player.change_texture("torch")
 	print(godofo.vida)
 	
 func get_espada(godofo, espada):
@@ -253,6 +256,13 @@ func get_espada(godofo, espada):
 	inject_sprite(map[newi], vaziokkj)
 	sound_effects_player.play_pickup()
 	#muda sprite @mat (Pode ser tanto gold qnd normal sword aq)
+	match espada.tipo:
+		"espada":
+			print("Pegou espada")
+			Player.change_texture("sword")
+		"espada_dourada":
+			print("Pegou espada dourada")
+			Player.change_texture("gold_sword")
 	
 func get_pocao(godofo, pocao):
 	godofo.vida += pocao.info.cura
