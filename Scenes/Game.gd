@@ -9,6 +9,9 @@ onready var pocao_tscn = load("res://Scenes/Pocao.tscn")
 
 onready var vaziokkj = load("res://Scenes/vaziokkj.tscn")
 
+onready var stats = get_node("Stats")
+onready var sound_effects_player = get_node("SoundEffects")
+
 #onready var espada = load("res://Scenes/Espada.tscn")
 #onready var espada = load("res://Scenes/Espada.tscn")
 #onready var espada = load("res://Scenes/Espada.tscn")
@@ -45,6 +48,8 @@ func _ready():
 	
 	print(map)
 	move_player(player_position)
+	
+	SimpleSave.load_scene_partial(stats, 'stats.tscn')
 
 func check_visao(posicao):
 	#return
@@ -316,6 +321,5 @@ func move_player(node: TouchScreenButton):
 	randomize_spawn()
 	for m in map:
 		check_visao(m)
-	
 	
 

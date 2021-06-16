@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/Theme.tres" type="Theme" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 1 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.40973
+margin_top = 3.66608
+margin_right = -4.40973
+margin_bottom = 3.66602
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 45.5914
+margin_top = 179.347
+margin_right = 735.591
+margin_bottom = 220.347
+custom_fonts/font = SubResource( 1 )
+text = "GODOFREDO's DUNGEON"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 185.0
+margin_top = 345.292
+margin_right = 604.0
+margin_bottom = 434.292
+text = "JOGAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 185.0
+margin_top = 826.5
+margin_right = 604.0
+margin_bottom = 915.5
+text = "SAIR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 196.576
+margin_top = 470.933
+margin_right = 468.576
+margin_bottom = 501.933
+text = "High Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 495.029
+margin_top = 470.586
+margin_right = 523.029
+margin_bottom = 501.586
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
