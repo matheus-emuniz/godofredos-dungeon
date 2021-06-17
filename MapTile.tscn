@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/tile.png" type="Texture" id=1]
 [ext_resource path="res://MapTile.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/heart16.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://Sprites/espada.tres" type="SpriteFrames" id=5]
 
 [sub_resource type="VisualShaderNodeColorConstant" id=1]
 output_port_for_preview = 0
@@ -63,11 +64,10 @@ __meta__ = {
 }
 
 [node name="HP" type="TextureRect" parent="Control"]
-visible = false
 margin_left = 3.94114
-margin_top = 4.48534
+margin_top = 4.57946
 margin_right = 19.9411
-margin_bottom = 20.4853
+margin_bottom = 20.5795
 rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 __meta__ = {
@@ -75,16 +75,32 @@ __meta__ = {
 }
 
 [node name="HPVal" type="Label" parent="Control"]
-visible = false
-margin_left = 10.0
-margin_top = 4.0
-margin_right = 25.0
-margin_bottom = 21.0
+margin_left = 9.62351
+margin_top = 3.52939
+margin_right = 24.6235
+margin_bottom = 20.5294
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 4 )
 text = "8"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DmgVal" type="Label" parent="Control"]
+margin_left = 23.4596
+margin_top = 4.35707
+margin_right = 38.4596
+margin_bottom = 21.3571
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 4 )
+text = "8"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sword" type="AnimatedSprite" parent="Control"]
+position = Vector2( 18.7917, 7.28038 )
+scale = Vector2( 0.061513, 0.061513 )
+frames = ExtResource( 5 )
 
 [connection signal="pressed" from="." to="." method="_on_MapTile_pressed"]
