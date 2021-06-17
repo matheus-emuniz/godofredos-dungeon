@@ -19,7 +19,7 @@ onready var sword = get_node("Control/Sword")
 onready var Game = get_parent().get_parent()
 
 func _process(delta):
-	if tipo in ["esqueleto", "slime", "zumbi"] and index in Game.area_player:
+	if tipo in ["esqueleto", "slime", "zumbi"] and index in Game.visao_player:
 		hp.show()
 		hp_val.show()
 		dmg_val.show()

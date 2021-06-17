@@ -26,6 +26,8 @@ onready var map_sprite = [
 	null, null, null, null, 
 	null, null, null, null, 
 ]
+#onready var espada_inicial = get_node("Map/MapTile5")
+
 onready var map = [
 	get_node("Map/MapTile0"), get_node("Map/MapTile1"), get_node("Map/MapTile2"), get_node("Map/MapTile3"),
 	get_node("Map/MapTile4"), get_node("Map/MapTile5"), get_node("Map/MapTile6"), get_node("Map/MapTile7"),
@@ -38,12 +40,23 @@ onready var player_position: TouchScreenButton = get_node("Map/MapTile6")
 
 
 func _ready():
+	#espada_inicial = get_node("Map/MapTile5")
+	#espada_inicial.tipo = "espada"
+	#espada_inicial.info.dano_espada = 3
+	#espada_inicial.info.resistencia_espada = 2
+	#map[5] = espada_inicial
+	#inject_sprite(espada_inicial, espada_tscn)
 	map[player_position.index] = Player
 	
 	print(map)
 	move_player(player_position)
 	
-	SimpleSave.load_scene_partial(stats, 'stats.tscn')
+	print("ingame")
+	print(stats.high_score)
+	var kkj = ResourceLoader.load('res://Suamae/stats.tscn').instance()
+	stats.last_score = kkj.last_score
+	stats.high_score = kkj.high_score
+	print(stats.high_score)
 	
 	stats.current_score = 0
 
@@ -110,6 +123,7 @@ func randomize_spawn():
 			
 		var tscn = null
 		
+		randomize()
 		var spawns = randi()%10
 		# @mat
 		#var dificuldade = 20 + player_level
@@ -225,7 +239,16 @@ func combate(godofo, inimigo):
 				godofo.resistencia = 100
 				#muda sprite pra torch @mat
 				Player.change_texture("torch")
+			sound_effects_player.play_battle()
 			inject_sprite(map[newi], vaziokkj)
+			var pontin = 0
+			if inimigo.tipo == "slime":
+				pontin = 1
+			elif inimigo.tipo == "zumbi":
+				pontin = 2
+			else:
+				pontin = 3
+			stats.add_score(pontin)
 			break
 		else:
 			#rola trocação sincera
@@ -233,8 +256,16 @@ func combate(godofo, inimigo):
 			if godofo.vida - istats.monstro_dano <= 0:
 				print("morreu")
 				godofo.vida -= istats.monstro_dano
+				stats.last_score = stats.current_score
+				print(stats.current_score)
+				print(stats.high_score)
+				if (stats.current_score > stats.high_score):
+					stats.high_score = stats.current_score
+				print(stats.current_score)
+				print(stats.high_score)
 				sound_effects_player.play_death()
-				SimpleSave.save_scene_partial(stats, "stats.tscn")
+				
+				SimpleSave.save_scene_partial(stats, "res://Suamae/stats.tscn")
 				get_tree().change_scene("res://Scenes/DeathScreen.tscn")
 				break
 				#faz alguma coisa ai matheus
@@ -287,6 +318,8 @@ func move_player(node: TouchScreenButton):
 	var parede_esquerda = [0,4,8,12]
 		
 	area_player = []
+	if !(newi in [oldi -1, oldi +1, oldi +4, oldi -4]): 
+		return
 	if oldi in parede_direita and newi in [oldi - 1, oldi + 4, oldi -  4]:
 		area_player = [newi, newi + 3, newi + 4, newi - 1, newi - 5, newi - 4, newi + 1, newi + 5, newi - 3]
 		player_position = node
@@ -305,12 +338,12 @@ func move_player(node: TouchScreenButton):
 		Player.position = get_center(node)
 	
 	if newi in parede_direita:
-		visao_player = [newi, newi + 3, newi + 4, newi - 1, newi - 5, newi - 4]
+		visao_player = [newi, newi + 4, newi - 1, newi - 4]
 	elif newi in parede_esquerda:
-		visao_player = [newi, newi + 1, newi + 4, newi + 5, newi - 4, newi - 3]
+		visao_player = [newi, newi + 1, newi + 4, newi - 4]
 	else:
-		visao_player = [newi, newi + 1, newi + 3, newi + 4, newi + 5,
-			newi - 1, newi - 3, newi - 4, newi -5]
+		visao_player = [newi, newi + 1, newi + 4,
+			newi - 1, newi - 4]
 		
 	if map[newi].tipo != "vazio" and map[newi].tipo != "player":
 		# vai ter combate viado ou pot/espada
@@ -320,9 +353,12 @@ func move_player(node: TouchScreenButton):
 			get_espada(Player, map[newi])
 		else:
 			combate(Player, map[newi])
+	print(map[5].tipo)
 	print(area_player)
 	
 	
+	map[newi] = get_node("Map/MapTile" + str(newi))
+	map[newi].tipo = "vazio"
 	map[newi] = Player
 	print("atualizou")
 	map[oldi] = get_node("Map/MapTile" + str(oldi))

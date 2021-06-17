@@ -5,7 +5,19 @@ onready var high_score_val: Label = get_node("HighScoreVal")
 onready var last_score_val: Label = get_node("LastScoreVal")
 
 func _ready():
-	SimpleSave.load_scene_partial(stats, "stats.tscn")
+	stats.current_score = 0
+	print("6 em baixo ? lul")
+	var kkj = ResourceLoader.load('res://Suamae/stats.tscn').instance()
+	print("Agora vai")
+	print(kkj.last_score)
+	print(kkj.high_score)
+	print("Agora vai")
+	stats.last_score = kkj.last_score
+	stats.high_score = kkj.high_score
+	print(stats.last_score)
+	print(stats.last_score)
+	
+	#SimpleSave.load_scene_partial(stats, "stats.tscn")
 
 
 func _process(delta):
